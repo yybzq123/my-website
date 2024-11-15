@@ -24,7 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 注册登录拦截器，并排除登录和注册路径，允许公共访问
-        registry.addInterceptor(logininterceptor).excludePathPatterns("/user/login","/user/register");
+        registry.addInterceptor(logininterceptor).excludePathPatterns("/app/applogin","/app/appregister");
     }
 
 

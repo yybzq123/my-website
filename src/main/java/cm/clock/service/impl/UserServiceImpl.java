@@ -6,6 +6,8 @@ import cm.clock.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -23,8 +25,10 @@ public class UserServiceImpl implements UserService {
      * 根据用户名查询用户信息
      */
     @Override
-    public User findByUserName(String name) {
+    public User findByUserNameId(String studentId) {
 
-        return usermapper.findByUserName(name);
+        return usermapper.findByUserName(studentId);
     }
+
+
 }

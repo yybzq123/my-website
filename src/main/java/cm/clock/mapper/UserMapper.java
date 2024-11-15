@@ -14,6 +14,6 @@ public interface UserMapper {
     public void appregister(String studentId,String password,String name  ) ;
 
 
-    @Select("select * from students where name=#{name}")
-    User findByUserName(String name);
+    @Select("select * from students where student_id=#{studentId}")
+    User findByUserName(String studentId);
 }

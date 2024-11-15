@@ -1,9 +1,11 @@
 package cm.clock.utils;
 
+import ch.qos.logback.core.util.MD5Util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.stereotype.Component;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Map;
 
@@ -14,7 +16,7 @@ public class JwtUtil {
     private static final String KEY = "itheima";
 	
 	//接收业务数据,生成token并返回
-    public static String genToken(Map<String, Object> claims) {
+    public static String genToken(Map<String, Object> claims) throws NoSuchAlgorithmException {
         return JWT.create()
                 .withClaim("claims", claims)
                 .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 12))
