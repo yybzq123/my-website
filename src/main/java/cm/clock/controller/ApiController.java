@@ -4,13 +4,9 @@ import cm.clock.pojo.Result;
 import cm.clock.pojo.User;
 import cm.clock.service.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -25,5 +21,9 @@ public class ApiController {
         return Result.success("排行成功",list);
 
     }
+
+
+
+
 
 }

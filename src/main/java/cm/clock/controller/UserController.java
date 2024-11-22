@@ -1,10 +1,12 @@
 package cm.clock.controller;
 
+import cm.clock.pojo.DTO.updatePwdDTO;
 import cm.clock.pojo.Result;
 import cm.clock.pojo.User;
 import cm.clock.service.UserService;
 import cm.clock.utils.JwtUtil;
 import cm.clock.utils.Md5Util;
+import cm.clock.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Validated
 @RestController
@@ -58,7 +61,22 @@ public class UserController {
         }
     }
 
-
+     /**
+     * 更新密码
+     */
+@PostMapping("/updatePwd")
+    public Result updatePwd(@RequestBody updatePwdDTO updatePwdDTO){
+        Map<String,Object> map= ThreadLocalUtil.get();
+        //验证用户信息
+        if(!updatePwdDTO.getStudentId().equals(map.get("StudentId"))&&updatePwdDTO.getName().equals(map.get("name")))
+            return Result.error("信息错误");
+        //验证两次密码是否一致
+        if(!Objects.equals(updatePwdDTO.getNewPwd(), updatePwdDTO.getReNewPwd()))
+            return Result.error("两次密码不一致");
+        updatePwdDTO.setNewPwd(Md5Util.getMD5String(updatePwdDTO.getNewPwd()));
+        userservice.updatePwd(updatePwdDTO);
+        return Result.success("更新密码成功");
+    }
 
 
 

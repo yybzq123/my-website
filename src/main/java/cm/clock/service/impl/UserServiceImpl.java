@@ -1,12 +1,11 @@
 package cm.clock.service.impl;
 
 import cm.clock.mapper.UserMapper;
+import cm.clock.pojo.DTO.updatePwdDTO;
 import cm.clock.pojo.User;
 import cm.clock.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,5 +29,8 @@ public class UserServiceImpl implements UserService {
         return usermapper.findByUserName(studentId);
     }
 
-
+    @Override
+    public void updatePwd(updatePwdDTO forgetPwdDTO) {
+        usermapper.updatePwd(forgetPwdDTO);
+    }
 }
