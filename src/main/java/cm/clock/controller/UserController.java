@@ -50,7 +50,7 @@ public class UserController {
         if(newuser!=null&&Md5Util.checkPassword(user.getPassword(),newuser.getPassword()))
         {
             Map<String, Object> claims = new HashMap<>();
-            claims.put("StudentId",user.getStudentId());
+            claims.put("studentId",user.getStudentId());
             claims.put("name",user.getName());
             String token = JwtUtil.genToken(claims);
             return Result.success(token);
@@ -68,7 +68,7 @@ public class UserController {
     public Result updatePwd(@RequestBody updatePwdDTO updatePwdDTO){
         Map<String,Object> map= ThreadLocalUtil.get();
         //验证用户信息
-        if(!updatePwdDTO.getStudentId().equals(map.get("StudentId"))&&updatePwdDTO.getName().equals(map.get("name")))
+        if(!updatePwdDTO.getStudentId().equals(map.get("studentId"))&&updatePwdDTO.getName().equals(map.get("name")))
             return Result.error("信息错误");
         //验证两次密码是否一致
         if(!Objects.equals(updatePwdDTO.getNewPwd(), updatePwdDTO.getReNewPwd()))
@@ -78,6 +78,15 @@ public class UserController {
         return Result.success("更新密码成功");
     }
 
+
+    @GetMapping("/getUserInfo")
+    public Result<User> getUserInfo(){
+        Map<String,Object> map=ThreadLocalUtil.get();
+        String studentId = (String) map.get("studentId");
+        User user=userservice.getUserInfo(studentId);
+        return Result.success("获取成功",user);
+
+    }
 
 
 

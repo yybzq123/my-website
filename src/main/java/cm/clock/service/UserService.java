@@ -10,4 +10,5 @@ public interface UserService {
 
     void updatePwd(updatePwdDTO forgetPwdDTO);
 
+    User getUserInfo(String studentId);
 }

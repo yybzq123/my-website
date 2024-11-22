@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface UserMapper {
 
+
+
     @Insert("insert into students(student_id,password,name) " +
             "values (#{studentId},#{password},#{name})")
     public void appregister(String studentId,String password,String name  ) ;
@@ -20,4 +22,7 @@ public interface UserMapper {
 
     @Update("update students set password=#{newPwd} where student_id=#{studentId}")
     void updatePwd(updatePwdDTO forgetPwdDTO);
+
+    @Select("select * from students where student_id=#{studentId}")
+    User getUserInfo(String studentId);
 }

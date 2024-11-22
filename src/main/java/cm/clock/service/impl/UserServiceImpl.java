@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
     public void updatePwd(updatePwdDTO forgetPwdDTO) {
         usermapper.updatePwd(forgetPwdDTO);
     }
+
+    @Override
+    public User getUserInfo(String studentId) {
+        return usermapper.getUserInfo(studentId);
+    }
 }
