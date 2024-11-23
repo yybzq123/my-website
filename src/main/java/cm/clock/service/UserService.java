@@ -1,6 +1,6 @@
 package cm.clock.service;
 
-import cm.clock.pojo.DTO.updatePwdDTO;
+import cm.clock.pojo.DTO.forgetPwdDTO;
 import cm.clock.pojo.User;
 
 public interface UserService {
@@ -8,7 +8,7 @@ public interface UserService {
 
     User findByUserNameId(String studentId);
 
-    void updatePwd(updatePwdDTO forgetPwdDTO);
+    void forgetPwd(forgetPwdDTO forgetPwdDTO);
 
     User getUserInfo(String studentId);
 }

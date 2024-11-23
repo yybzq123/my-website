@@ -1,6 +1,6 @@
 package cm.clock.controller;
 
-import cm.clock.pojo.DTO.updatePwdDTO;
+import cm.clock.pojo.DTO.forgetPwdDTO;
 import cm.clock.pojo.Result;
 import cm.clock.pojo.User;
 import cm.clock.service.UserService;
@@ -62,23 +62,30 @@ public class UserController {
     }
 
      /**
-     * 更新密码
+     * 忘记密码
      */
 @PostMapping("/updatePwd")
-    public Result updatePwd(@RequestBody updatePwdDTO updatePwdDTO){
-        Map<String,Object> map= ThreadLocalUtil.get();
-        //验证用户信息
-        if(!updatePwdDTO.getStudentId().equals(map.get("studentId"))&&updatePwdDTO.getName().equals(map.get("name")))
-            return Result.error("信息错误");
+    public Result forgetPwd(@RequestBody forgetPwdDTO forgetPwdDTO){
+
+        //验证用户是否存在
+        String studentId =forgetPwdDTO.getStudentId();
+        User user=userservice.findByUserNameId(studentId);
+        if(user==null)
+            return Result.error("用户不存在");
+        String name=user.getName();
+        if(!name.equals(user.getName()))
+            return Result.error("用户信息错误");
         //验证两次密码是否一致
-        if(!Objects.equals(updatePwdDTO.getNewPwd(), updatePwdDTO.getReNewPwd()))
+        if(!Objects.equals(forgetPwdDTO.getNewPwd(), forgetPwdDTO.getReNewPwd()))
             return Result.error("两次密码不一致");
-        updatePwdDTO.setNewPwd(Md5Util.getMD5String(updatePwdDTO.getNewPwd()));
-        userservice.updatePwd(updatePwdDTO);
+        forgetPwdDTO.setNewPwd(Md5Util.getMD5String(forgetPwdDTO.getNewPwd()));
+        userservice.forgetPwd(forgetPwdDTO);
         return Result.success("更新密码成功");
     }
 
-
+/**
+ * 获取用户信息
+ */
     @GetMapping("/getUserInfo")
     public Result<User> getUserInfo(){
         Map<String,Object> map=ThreadLocalUtil.get();
