@@ -4,7 +4,7 @@ import lombok.Data;
 
 // 忘记密码传输对象
 @Data
-public class forgetPwdDTO {
+public class updatePwdDTO {
     private String name;
     private String studentId;
     private String newPwd;
