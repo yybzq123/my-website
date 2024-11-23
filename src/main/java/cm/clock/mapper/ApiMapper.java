@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface ApiMapper {
 
-    @Select("select * from students" )
+    @Select("SELECT * FROM students ORDER BY time DESC")
     List<User> list();
 
 
