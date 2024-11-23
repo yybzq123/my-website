@@ -1,6 +1,6 @@
 package cm.clock.controller;
 
-import cm.clock.pojo.DTO.forgetPwdDTO;
+import cm.clock.pojo.DTO.updatePwdDTO;
 import cm.clock.pojo.Result;
 import cm.clock.pojo.User;
 import cm.clock.service.UserService;
@@ -65,7 +65,7 @@ public class UserController {
      * 忘记密码
      */
 @PostMapping("/updatePwd")
-    public Result forgetPwd(@RequestBody forgetPwdDTO forgetPwdDTO){
+    public Result forgetPwd(@RequestBody updatePwdDTO forgetPwdDTO){
 
         //验证用户是否存在
         String studentId =forgetPwdDTO.getStudentId();

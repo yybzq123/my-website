@@ -29,8 +29,10 @@ public class UserServiceImpl implements UserService {
         return usermapper.findByUserName(studentId);
     }
 
+
+
     @Override
-    public void updatePwd(updatePwdDTO forgetPwdDTO) {
+    public void forgetPwd(updatePwdDTO forgetPwdDTO) {
         usermapper.updatePwd(forgetPwdDTO);
     }
 
