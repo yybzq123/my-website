@@ -72,6 +72,8 @@ public class ApiController {
     public Result<User> info(){
         Map<String,Object> map = ThreadLocalUtil.get();
         String studentId = (String) map.get(("studentId"));
+        log.info("获取用户信息"+ studentId);
+
         User userInfo = userService.getUserInfo(studentId);
         return Result.success("获取成功",userInfo);
     }

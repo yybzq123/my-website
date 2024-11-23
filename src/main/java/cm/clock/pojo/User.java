@@ -17,28 +17,28 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class User {
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer id;
 
-    @NotEmpty(groups = {Register.class})
+//    @NotEmpty(groups = {Register.class})
     private String name;
 
-    @NotNull(groups = {Register.class, Login.class})
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @NotNull(groups = {Register.class, Login.class})
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String studentId;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String nickname;
 
-    @NotNull(groups = {Register.class, Login.class})
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @NotNull(groups = {Register.class, Login.class})
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     private String photo;
 
     private long time;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer status;
 
     public interface Register{}
