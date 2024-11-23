@@ -36,6 +36,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserInfo(String studentId) {
-        return usermapper.getUserInfo(studentId);
+        //先获取用户打卡状态
+        int status = usermapper.countByStudentId(studentId);
+        //把状态添加到用户信息中
+        User userInfo = usermapper.getUserInfo(studentId);
+        userInfo.setStatus(status);
+        return userInfo;
     }
+
 }

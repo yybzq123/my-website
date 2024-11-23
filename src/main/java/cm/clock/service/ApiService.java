@@ -9,4 +9,7 @@ public interface ApiService {
     List<User> list();
 
 
+    void clockIn(String studentId);
+
+    void clockOut(String studentId);
 }

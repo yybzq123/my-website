@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Comparable<User>{
+public class User {
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer id;
@@ -36,18 +36,14 @@ public class User implements Comparable<User>{
 
     private String photo;
 
-    private BigDecimal time;
+    private long time;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer status;
-
-    @Override
-    public int compareTo(User user) {
-        return user.getTime().compareTo(this.getTime());
-
-    }
 
     public interface Register{}
     public interface Login{}
 
 }
+
+
